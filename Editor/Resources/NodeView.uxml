@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <Style src="project://database/Assets/ExampleGame/Trees/Editor/NodeView.uss?fileID=7433441132597879392&amp;guid=21a3a037d0c348e5ba25fac7a77c4f93&amp;type=3#NodeView" />
+    <ui:VisualElement name="node-state" />
+    <ui:VisualElement name="node-border">
+        <ui:VisualElement name="contents">
+            <ui:VisualElement name="top">
+                <ui:VisualElement name="input" />
+                <ui:VisualElement name="divider" class="vertical" />
+                <ui:VisualElement name="title">
+                    <ui:Label name="title-label" text="SequencerNode" class="unity-text-element unity-label" style="background-color: rgba(0, 0, 0, 0); margin-left: 0; margin-right: 0; margin-top: 8px; margin-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; -unity-text-align: middle-center; flex-grow: 1;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="divider" class="horizontal" />
+                <ui:VisualElement name="output" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="selection-border" picking-mode="Ignore" />
+</ui:UXML>

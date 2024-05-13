@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/ExampleGame/Trees/Editor/BehaviourTreeEditor.uss?fileID=7433441132597879392&amp;guid=fbc0dbfcdd81b3be4a3076cd2a983280&amp;type=3#BehaviourTreeEditor" />
+    <ui:VisualElement style="flex-grow: 1; background-color: rgb(65, 65, 65);">
+        <Shipico.BehaviourTrees.Editor.SplitView fixed-pane-initial-dimension="240">
+            <ui:VisualElement name="left-panel" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                <ui:Label tabindex="-1" text="Inspector" display-tooltip-when-elided="true" />
+                <Shipico.BehaviourTrees.Editor.NodeInspectorView />
+            </ui:VisualElement>
+            <ui:VisualElement name="right-panel" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                <ui:Label tabindex="-1" text="Tree View" display-tooltip-when-elided="true" />
+                <Shipico.BehaviourTrees.Editor.BehaviourTreeGraphView focusable="true" style="flex-grow: 1;" />
+            </ui:VisualElement>
+        </Shipico.BehaviourTrees.Editor.SplitView>
+    </ui:VisualElement>
+</ui:UXML>

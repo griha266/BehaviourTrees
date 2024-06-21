@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Shipico.BehaviourTrees
 {
@@ -44,6 +43,11 @@ namespace Shipico.BehaviourTrees
             }
 
             return _finishedNodes.Count == allNodesCount ? Status.Success : Status.Running;
+        }
+
+        protected override ManyChildrenNode<TreeNode> CloneInternal()
+        {
+            return Instantiate(this);
         }
     }
 }

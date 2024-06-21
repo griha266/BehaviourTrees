@@ -38,5 +38,10 @@ namespace Shipico.BehaviourTrees
         {
             return _currentNode.UpdateNode(Blackboard, Tree, deltaTime);
         }
+
+        protected override ManyChildrenNode<StrategyNode> CloneInternal()
+        {
+            return Instantiate(this);
+        }
     }
 }

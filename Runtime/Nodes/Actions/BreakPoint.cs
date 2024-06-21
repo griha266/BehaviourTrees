@@ -14,5 +14,10 @@ namespace Shipico.BehaviourTrees
             Debug.Break();
             return Status.Success;
         }
+
+        public override TreeNode Clone()
+        {
+            return Instantiate(this);
+        }
     }
 }

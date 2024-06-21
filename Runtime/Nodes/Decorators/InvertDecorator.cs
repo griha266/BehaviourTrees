@@ -14,5 +14,10 @@ namespace Shipico.BehaviourTrees
                 _ => throw new ArgumentOutOfRangeException()
             };
         }
+
+        public override TreeNode Clone()
+        {
+            return Instantiate(this);
+        }
     }
 }

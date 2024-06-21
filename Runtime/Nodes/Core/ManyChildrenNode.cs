@@ -11,7 +11,7 @@ namespace Shipico.BehaviourTrees
         void Sort();
     }
     public abstract class ManyChildrenNode<TNodeType> : TreeNode, IManyChildrenNode
-        where TNodeType : TreeNode
+        where TNodeType : TreeNode, ICloneable<TNodeType>
     {
         public IEnumerable<TreeNode> ChildrenAsBaseNode => Children;
         public void AddChild(TreeNode node)
@@ -46,5 +46,20 @@ namespace Shipico.BehaviourTrees
         }
 
         public List<TNodeType> Children = new();
+        public sealed override TreeNode Clone()
+        {
+            var clone = CloneInternal();
+            var children = new List<TNodeType>();
+            foreach (var child in Children)
+            {
+                ICloneable<TNodeType> childAsCloneable = child;
+                children.Add(childAsCloneable.Clone());
+            }
+
+            clone.Children = children;
+            return clone;
+        }
+
+        protected abstract ManyChildrenNode<TNodeType> CloneInternal();
     }
 }

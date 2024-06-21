@@ -1,4 +1,3 @@
-using UnityEngine;
 
 namespace Shipico.BehaviourTrees
 {
@@ -22,6 +21,13 @@ namespace Shipico.BehaviourTrees
             }
 
             return Child.UpdateNode(Blackboard, Tree, deltaTime);
+        }
+
+        public override TreeNode Clone()
+        {
+            var clone = Instantiate(this);
+            clone.Seconds = Seconds;
+            return clone;
         }
     }
 }

@@ -39,5 +39,10 @@ namespace Shipico.BehaviourTrees
                     return Status.Running;
             }
         }
+
+        protected override ManyChildrenNode<TreeNode> CloneInternal()
+        {
+            return Instantiate(this);
+        }
     }
 }

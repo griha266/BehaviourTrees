@@ -7,5 +7,10 @@ namespace Shipico.BehaviourTrees
             Child.UpdateNode(Blackboard, Tree, deltaTime);
             return Status.Running;
         }
+
+        public override TreeNode Clone()
+        {
+            return Instantiate(this);
+        }
     }
 }

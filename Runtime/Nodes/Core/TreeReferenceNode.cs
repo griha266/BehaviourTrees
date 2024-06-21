@@ -25,5 +25,12 @@ namespace Shipico.BehaviourTrees
         {
             return ReferencedTree.UpdateTree(deltaTime);
         }
+
+        public override TreeNode Clone()
+        {
+            var clone = Instantiate(this);
+            clone.ReferencedTree = ReferencedTree.Clone();
+            return clone;
+        }
     }
 }

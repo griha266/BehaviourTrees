@@ -11,5 +11,10 @@ namespace Shipico.BehaviourTrees
         {
             return Status.Failure;
         }
+
+        public override TreeNode Clone()
+        {
+            return Instantiate(this);
+        }
     }
 }

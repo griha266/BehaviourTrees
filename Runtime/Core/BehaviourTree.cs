@@ -61,5 +61,14 @@ namespace Shipico.BehaviourTrees
             }
         }
 
+        // TODO separate asset from tree model
+        public BehaviourTree Clone()
+        {
+            var clone = Instantiate(this);
+            var rootClone = RootNode.Clone();
+            clone.RootNode = rootClone;
+            return clone;
+        }
+
     }
 }

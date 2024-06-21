@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Shipico.BehaviourTrees
 {
-    public abstract class TreeNode : ScriptableObject
+    public abstract class TreeNode : ScriptableObject, ICloneable<TreeNode>
     {
         public string Id;
         public Vector2 GrahpPosition;
@@ -59,5 +59,7 @@ namespace Shipico.BehaviourTrees
         protected virtual void OnEnter() { }
         protected abstract void OnExit(bool cancelled);
         protected abstract Status OnUpdate(float deltaTime);
+
+        public abstract TreeNode Clone();
     }
 }

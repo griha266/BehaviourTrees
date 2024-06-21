@@ -23,5 +23,12 @@ namespace Shipico.BehaviourTrees
             return _counter >= Count ? result : Status.Running;
 
         }
+
+        public override TreeNode Clone()
+        {
+            var clone = Instantiate(this);
+            clone.Count = Count;
+            return clone;
+        }
     }
 }

@@ -21,5 +21,12 @@ namespace Shipico.BehaviourTrees
         {
             return Importance;
         }
+
+        protected override StrategyNode CloneInternal()
+        {
+            var clone = Instantiate(this);
+            clone.Importance = Importance;
+            return clone;
+        }
     }
 }

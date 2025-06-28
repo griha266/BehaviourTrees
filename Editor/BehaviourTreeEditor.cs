@@ -51,7 +51,7 @@ namespace Shipico.BehaviourTrees.Editor
         private void OnUnitySelectionChanged()
         {
             var selectedObject = Selection.activeObject;
-            if (selectedObject is BehaviourTree tree)
+            if (selectedObject is BehaviourTree tree && AssetDatabase.Contains(tree))
             {
                 SetTree(tree);
                 _nodeInspector.UpdateSelection(null);

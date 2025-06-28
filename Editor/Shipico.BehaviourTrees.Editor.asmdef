@@ -1,10 +1,12 @@
 {
     "name": "Shipico.BehaviourTrees.Editor",
-    "rootNamespace": "",
+    "rootNamespace": "Shipico.BehaviourTrees.Editor",
     "references": [
         "GUID:2399fe8db12b927819767f67a1a90de2"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

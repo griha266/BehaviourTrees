@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -49,6 +50,7 @@ namespace Shipico.BehaviourTrees.Editor
             node.GrahpPosition = position;
             node.Id = GUID.Generate().ToString();
             node.name = node.Id;
+            tree.Nodes ??= new List<TreeNode>();
             tree.Nodes.Add(node);
             AssetDatabase.AddObjectToAsset(node, tree);
             AssetDatabase.SaveAssets();

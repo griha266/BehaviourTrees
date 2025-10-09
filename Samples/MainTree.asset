@@ -1,0 +1,389 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9134045118742718830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e27f70ab5643c2b787e16e8da1baf9, type: 3}
+  m_Name: 35c60cc4c3fba44dfb6a1423eb1b1398
+  m_EditorClassIdentifier: Shipico.BehaviourTrees::Shipico.BehaviourTrees.Log
+  id: 35c60cc4c3fba44dfb6a1423eb1b1398
+  graphPosition: {x: 1325.5004, y: 399.25003}
+  Message: This will be called 3 times
+--- !u!114 &-8628282363268833846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d5c5de79c014a19a43fbd36ef3d2e76, type: 3}
+  m_Name: b3de644a597ac4fdeb88d795fc21874a
+  m_EditorClassIdentifier: Shipico.BehaviourTrees::Shipico.BehaviourTrees.RootNode
+  id: b3de644a597ac4fdeb88d795fc21874a
+  graphPosition: {x: 722.0433, y: -602.5823}
+  Child: {fileID: 6900436295414685648}
+--- !u!114 &-8302426962913287986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a8feb7e883437b9a4d35968c21b58b, type: 3}
+  m_Name: 183545c4f026142cdaa145cd09f2a661
+  m_EditorClassIdentifier: Shipico.BehaviourTrees::Shipico.BehaviourTrees.ParallelNode
+  id: 183545c4f026142cdaa145cd09f2a661
+  graphPosition: {x: 921.5115, y: 124.29479}
+  Children:
+  - {fileID: 5899887732381390137}
+  - {fileID: 2819091566014951720}
+--- !u!114 &-7590262597883938215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 352e883fd95f4c63a8c2c059071dba6b, type: 3}
+  m_Name: 47ae85dbde6b04d08b3cca9049a9573c
+  m_EditorClassIdentifier: Shipico.BehaviourTrees::Shipico.BehaviourTrees.Fail
+  id: 47ae85dbde6b04d08b3cca9049a9573c
+  graphPosition: {x: 295.49997, y: 293.03467}
+--- !u!114 &-6764401123211465485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e27f70ab5643c2b787e16e8da1baf9, type: 3}
+  m_Name: c873bffbb83114bc2b07f930e6b3b612
+  m_EditorClassIdentifier: Shipico.BehaviourTrees::Shipico.BehaviourTrees.Log
+  id: c873bffbb83114bc2b07f930e6b3b612
+  graphPosition: {x: 1593, y: 527.5}
+  Message: This strategy is never called
+--- !u!114 &-5149720045368869522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47ee1bf7d9b2484ebb2240b1e077adc5, type: 3}
+  m_Name: a7467e10e99704a26a0fc6765a7fec90
+  m_EditorClassIdentifier: Shipico.BehaviourTrees::Shipico.BehaviourTrees.RepeatCount
+  id: a7467e10e99704a26a0fc6765a7fec90
+  graphPosition: {x: 1325.5409, y: 150.49997}
+  Child: {fileID: 6242875476914451016}
+  count: 3
+--- !u!114 &-1753055833537883626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 227534a8d21646258b614a3d6b882dc4, type: 3}
+  m_Name: 40bf7f1a4232f4cf38c1da0f9798e0ee
+  m_EditorClassIdentifier: Shipico.BehaviourTrees::Shipico.BehaviourTrees.TreeReferenceNode
+  id: 40bf7f1a4232f4cf38c1da0f9798e0ee
+  graphPosition: {x: 2341.5, y: 43.5}
+  ReferencedTree: {fileID: 11400000, guid: c2c15804415ff1f58a7969a3a3807f9f, type: 2}
+--- !u!114 &-834383449155471763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c28ef15d3ba4f5da73282b2a6e49073, type: 3}
+  m_Name: 6fdad5fbedb5849f98ab0f536a4edd33
+  m_EditorClassIdentifier: Shipico.BehaviourTrees::Shipico.BehaviourTrees.EvaluationNode
+  id: 6fdad5fbedb5849f98ab0f536a4edd33
+  graphPosition: {x: 1794.9998, y: 54.00001}
+  Children:
+  - {fileID: 6753272226616986044}
+  - {fileID: -450091307758506474}
+--- !u!114 &-450091307758506474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c41b22943940c683c78d3d33a261f4, type: 3}
+  m_Name: bdceb5aca61544f7d88de1bbb40e6809
+  m_EditorClassIdentifier: Shipico.BehaviourTrees::Shipico.BehaviourTrees.FixedImportanceStrategy
+  id: bdceb5aca61544f7d88de1bbb40e6809
+  graphPosition: {x: 1945.0793, y: 278.25003}
+  Child: {fileID: 8957389400018982892}
+  importance:
+    value: 0.4
+--- !u!114 &-178949977141148245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e27f70ab5643c2b787e16e8da1baf9, type: 3}
+  m_Name: 79db889627ae14bb5bdcd19acc7186b3
+  m_EditorClassIdentifier: Shipico.BehaviourTrees::Shipico.BehaviourTrees.Log
+  id: 79db889627ae14bb5bdcd19acc7186b3
+  graphPosition: {x: 2633.16, y: 7.25}
+  Message: End!
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6882a981e9ba56761bed86f803bf507e, type: 3}
+  m_Name: MainTree
+  m_EditorClassIdentifier: Shipico.BehaviourTrees::Shipico.BehaviourTrees.BehaviourTree
+  rootNode: {fileID: -8628282363268833846}
+  nodes:
+  - {fileID: -8628282363268833846}
+  - {fileID: 1077305384462949317}
+  - {fileID: 6900436295414685648}
+  - {fileID: 2177790913261288030}
+  - {fileID: -7590262597883938215}
+  - {fileID: 1075380398395365341}
+  - {fileID: 5449162360536679204}
+  - {fileID: -8302426962913287986}
+  - {fileID: 5899887732381390137}
+  - {fileID: 2819091566014951720}
+  - {fileID: 2204711364451516586}
+  - {fileID: 5023952541949655557}
+  - {fileID: 6242875476914451016}
+  - {fileID: -5149720045368869522}
+  - {fileID: -9134045118742718830}
+  - {fileID: -834383449155471763}
+  - {fileID: 6753272226616986044}
+  - {fileID: -450091307758506474}
+  - {fileID: -6764401123211465485}
+  - {fileID: 8957389400018982892}
+  - {fileID: -1753055833537883626}
+  - {fileID: -178949977141148245}
+--- !u!114 &1075380398395365341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e27f70ab5643c2b787e16e8da1baf9, type: 3}
+  m_Name: b590e0a0409544108b2f53b279ee6340
+  m_EditorClassIdentifier: Shipico.BehaviourTrees::Shipico.BehaviourTrees.Log
+  id: b590e0a0409544108b2f53b279ee6340
+  graphPosition: {x: 456.5578, y: 293}
+  Message: This will be called
+--- !u!114 &1077305384462949317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e27f70ab5643c2b787e16e8da1baf9, type: 3}
+  m_Name: aafe22fca28664bd28a4bdf38fecb4af
+  m_EditorClassIdentifier: Shipico.BehaviourTrees::Shipico.BehaviourTrees.Log
+  id: aafe22fca28664bd28a4bdf38fecb4af
+  graphPosition: {x: 61.052025, y: 112.12428}
+  Message: Start!
+--- !u!114 &2177790913261288030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d7d46143c6949b2b4a6e8321452a5b6, type: 3}
+  m_Name: ade72116858774a17a2431776f65d627
+  m_EditorClassIdentifier: Shipico.BehaviourTrees::Shipico.BehaviourTrees.SelectorNode
+  id: ade72116858774a17a2431776f65d627
+  graphPosition: {x: 445.52313, y: 102.71097}
+  Children:
+  - {fileID: -7590262597883938215}
+  - {fileID: 1075380398395365341}
+  - {fileID: 5449162360536679204}
+--- !u!114 &2204711364451516586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e27f70ab5643c2b787e16e8da1baf9, type: 3}
+  m_Name: 4806f980f8349450dbf6de222b4e5505
+  m_EditorClassIdentifier: Shipico.BehaviourTrees::Shipico.BehaviourTrees.Log
+  id: 4806f980f8349450dbf6de222b4e5505
+  graphPosition: {x: 846.5, y: 435.59567}
+  Message: This will be called second
+--- !u!114 &2819091566014951720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36de23c368184d7981349c1b9cd6d190, type: 3}
+  m_Name: 910b62bbcbe5f4046ad9330abbb8982a
+  m_EditorClassIdentifier: Shipico.BehaviourTrees::Shipico.BehaviourTrees.DelaySeconds
+  id: 910b62bbcbe5f4046ad9330abbb8982a
+  graphPosition: {x: 1048.5, y: 278}
+  Child: {fileID: 5023952541949655557}
+  Seconds: 1
+--- !u!114 &5023952541949655557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e27f70ab5643c2b787e16e8da1baf9, type: 3}
+  m_Name: a19edff32135d4253a66e7ec3fbc58f0
+  m_EditorClassIdentifier: Shipico.BehaviourTrees::Shipico.BehaviourTrees.Log
+  id: a19edff32135d4253a66e7ec3fbc58f0
+  graphPosition: {x: 1048.5, y: 454.86124}
+  Message: This will be called first
+--- !u!114 &5449162360536679204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e27f70ab5643c2b787e16e8da1baf9, type: 3}
+  m_Name: 4ba620df393964b73aebf6ca61681a73
+  m_EditorClassIdentifier: Shipico.BehaviourTrees::Shipico.BehaviourTrees.Log
+  id: 4ba620df393964b73aebf6ca61681a73
+  graphPosition: {x: 606.4999, y: 293}
+  Message: This will never called
+--- !u!114 &5899887732381390137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36de23c368184d7981349c1b9cd6d190, type: 3}
+  m_Name: a76a28c48c05648a083c9c8af8c44a38
+  m_EditorClassIdentifier: Shipico.BehaviourTrees::Shipico.BehaviourTrees.DelaySeconds
+  id: a76a28c48c05648a083c9c8af8c44a38
+  graphPosition: {x: 846.5, y: 268.99997}
+  Child: {fileID: 2204711364451516586}
+  Seconds: 2
+--- !u!114 &6242875476914451016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36de23c368184d7981349c1b9cd6d190, type: 3}
+  m_Name: 0b069b84e990b467fab920809e21a4b0
+  m_EditorClassIdentifier: Shipico.BehaviourTrees::Shipico.BehaviourTrees.DelaySeconds
+  id: 0b069b84e990b467fab920809e21a4b0
+  graphPosition: {x: 1325.5409, y: 268.99997}
+  Child: {fileID: -9134045118742718830}
+  Seconds: 1
+--- !u!114 &6753272226616986044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c41b22943940c683c78d3d33a261f4, type: 3}
+  m_Name: 669f4e29f91144673b5314dbc4d45fdc
+  m_EditorClassIdentifier: Shipico.BehaviourTrees::Shipico.BehaviourTrees.FixedImportanceStrategy
+  id: 669f4e29f91144673b5314dbc4d45fdc
+  graphPosition: {x: 1592.9998, y: 326.24994}
+  Child: {fileID: -6764401123211465485}
+  importance:
+    value: 0.2
+--- !u!114 &6900436295414685648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c33e38674a64cd69d12f9c9053f0032, type: 3}
+  m_Name: ff1bd1371a39f4b1184855ce72cdfe36
+  m_EditorClassIdentifier: Shipico.BehaviourTrees::Shipico.BehaviourTrees.SequenceNode
+  id: ff1bd1371a39f4b1184855ce72cdfe36
+  graphPosition: {x: 721.9999, y: -384.99005}
+  Children:
+  - {fileID: 1077305384462949317}
+  - {fileID: 2177790913261288030}
+  - {fileID: -8302426962913287986}
+  - {fileID: -5149720045368869522}
+  - {fileID: -834383449155471763}
+  - {fileID: -1753055833537883626}
+  - {fileID: -178949977141148245}
+--- !u!114 &8957389400018982892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e27f70ab5643c2b787e16e8da1baf9, type: 3}
+  m_Name: 56442838dbb034c1baa2ca096fd49ef3
+  m_EditorClassIdentifier: Shipico.BehaviourTrees::Shipico.BehaviourTrees.Log
+  id: 56442838dbb034c1baa2ca096fd49ef3
+  graphPosition: {x: 1972.9996, y: 491.24997}
+  Message: Select this strategy

@@ -1,8 +1,10 @@
+using UnityEngine.Serialization;
+
 namespace Shipico.BehaviourTrees
 {
     public class FixedImportanceStrategy : StrategyNode
     {
-        public NormalizedFloat Importance;
+        public NormalizedFloat importance;
         
         protected override void OnExit(bool cancelled)
         {
@@ -19,13 +21,13 @@ namespace Shipico.BehaviourTrees
 
         public override NormalizedFloat Evaluate()
         {
-            return Importance;
+            return importance;
         }
 
         protected override StrategyNode CloneInternal()
         {
             var clone = Instantiate(this);
-            clone.Importance = Importance;
+            clone.importance = importance;
             return clone;
         }
     }

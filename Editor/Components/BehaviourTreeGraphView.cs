@@ -9,12 +9,11 @@ using Edge = UnityEditor.Experimental.GraphView.Edge;
 
 namespace Shipico.BehaviourTrees.Editor
 {
-    public class BehaviourTreeGraphView : GraphView
+    [UxmlElement]
+    public partial class BehaviourTreeGraphView : GraphView
     {
         public event Action<NodeView> OnNodeSelected;
         private BehaviourTree _tree;
-
-        public new class UxmlFactory : UxmlFactory<BehaviourTreeGraphView, UxmlTraits> { }
 
         public BehaviourTreeGraphView()
         {
@@ -113,21 +112,21 @@ namespace Shipico.BehaviourTrees.Editor
             _tree.OnTreeStopped += OnTreeStopped;
             graphViewChanged += OnGraphViewChanged;
 
-            if (tree.RootNode == null)
+            if (tree.rootNode == null)
             {
-                tree.RootNode = tree.AddNodeAssetToTree<RootNode>(Vector2.zero);
+                tree.rootNode = tree.AddNodeAssetToTree<RootNode>(Vector2.zero);
             }
 
             // Create nodes
-            for (var i = 0; i < tree.Nodes.Count; i++)
+            for (var i = 0; i < tree.nodes.Count; i++)
             {
-                CreateNodeView(tree.Nodes[i]);
+                CreateNodeView(tree.nodes[i]);
             }
 
             // Create edges
-            for (var i = 0; i < tree.Nodes.Count; i++)
+            for (var i = 0; i < tree.nodes.Count; i++)
             {
-                var node = tree.Nodes[i];
+                var node = tree.nodes[i];
                 var nodeView = GetNodeView(node);
                 switch (node)
                 {
@@ -181,7 +180,7 @@ namespace Shipico.BehaviourTrees.Editor
 
         private NodeView GetNodeView(TreeNode node)
         {
-            return GetNodeByGuid(node.Id) as NodeView;
+            return GetNodeByGuid(node.id) as NodeView;
         }
 
         private GraphViewChange OnGraphViewChanged(GraphViewChange graphViewChange)

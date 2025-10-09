@@ -4,11 +4,11 @@ using UnityEngine.UIElements;
 
 namespace Shipico.BehaviourTrees.Editor
 {
-    public class NodeInspectorView : VisualElement
+    [UxmlElement]
+    public partial class NodeInspectorView : VisualElement
     {
-        public new class UxmlFactory : UxmlFactory<NodeInspectorView, UxmlTraits> { }
+        private readonly InspectorElement _inspector;
 
-        private InspectorElement _inspector;
         public NodeInspectorView()
         {
             _inspector = new InspectorElement();

@@ -1,8 +1,10 @@
+using UnityEngine.Serialization;
+
 namespace Shipico.BehaviourTrees
 {
     public class RepeatCount : DecoratorNode
     {
-        public int Count;
+        public int count;
 
         private int _counter;
 
@@ -20,14 +22,14 @@ namespace Shipico.BehaviourTrees
             }
             
             _counter++;
-            return _counter >= Count ? result : Status.Running;
+            return _counter >= count ? result : Status.Running;
 
         }
 
         public override TreeNode Clone()
         {
             var clone = Instantiate(this);
-            clone.Count = Count;
+            clone.count = count;
             return clone;
         }
     }

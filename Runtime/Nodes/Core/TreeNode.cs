@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Shipico.BehaviourTrees
 {
     public abstract class TreeNode : ScriptableObject, ICloneable<TreeNode>
     {
-        public string Id;
-        public Vector2 GrahpPosition;
+        public string id;
+        public Vector2 graphPosition;
         
         public enum Status
         {
@@ -29,7 +30,6 @@ namespace Shipico.BehaviourTrees
                 Blackboard = blackboard;
                 Tree = owner;
                 OnEnter();
-                IsRunning = true;
                 CurrentStatus = Status.Running;
             }
             else
@@ -37,7 +37,6 @@ namespace Shipico.BehaviourTrees
                 CurrentStatus = OnUpdate(deltaTime);
                 if (CurrentStatus != Status.Running)
                 {
-                    IsRunning = false;
                     OnExit(false);
                 }
             }
@@ -45,12 +44,9 @@ namespace Shipico.BehaviourTrees
             return CurrentStatus;
         }
 
-        public bool IsRunning { get; private set; }
-
         public void Abort()
         {
             CurrentStatus = Status.Failure;
-            IsRunning = false;
             OnExit(true);
         }
 

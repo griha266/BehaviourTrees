@@ -24,10 +24,10 @@ namespace Shipico.BehaviourTrees.Editor
         {
             Node = node;
             title = Node.GetType().Name;
-            viewDataKey = Node.Id;
+            viewDataKey = Node.id;
 
-            style.left = Node.GrahpPosition.x;
-            style.top = Node.GrahpPosition.y;
+            style.left = Node.graphPosition.x;
+            style.top = Node.graphPosition.y;
             
             CreateInputPorts();
             CreateOutputPorts();
@@ -39,8 +39,8 @@ namespace Shipico.BehaviourTrees.Editor
         {
             base.SetPosition(newPos);
             Undo.RecordObject(Node, "BehaviourTree (Set Position)");
-            Node.GrahpPosition.x = newPos.xMin;
-            Node.GrahpPosition.y = newPos.yMin;
+            Node.graphPosition.x = newPos.xMin;
+            Node.graphPosition.y = newPos.yMin;
             EditorUtility.SetDirty(Node);
         }
 
@@ -58,7 +58,7 @@ namespace Shipico.BehaviourTrees.Editor
 
             if (Application.isPlaying)
             {
-                if (!_isVisited && Node.IsRunning)
+                if (!_isVisited && Node.CurrentStatus == TreeNode.Status.Running)
                 {
                     _isVisited = true;
                 }
@@ -67,18 +67,14 @@ namespace Shipico.BehaviourTrees.Editor
             {
                 _isVisited = false;
             }
-            string className;
-            if (Node.IsRunning)
+            string className = null;
+            if (Node.CurrentStatus == TreeNode.Status.Running)
             {
                 className = "running";
             }
             else if(_isVisited)
             {
                 className = Node.CurrentStatus == TreeNode.Status.Failure ? "failure" : "success";
-            }
-            else
-            {
-                className = "";
             }
 
             AddToClassList(className);
@@ -89,6 +85,7 @@ namespace Shipico.BehaviourTrees.Editor
             _isVisited = false;
         }
         
+        // TODO this is basically a color, we could extract it to attribute also
         private void SetStyleClasses()
         {
             var className = Node switch
@@ -106,6 +103,7 @@ namespace Shipico.BehaviourTrees.Editor
             AddToClassList(className);
         }
 
+        // TODO extract this info into attributes on the nodes
         private void SetCompatibleTypes()
         {
             var currentType = Node.GetType();
@@ -128,43 +126,34 @@ namespace Shipico.BehaviourTrees.Editor
 
         private void CreateInputPorts()
         {
-            switch (Node)
-            {
-                case RootNode:
-                    break;
-                default:
-                    Input = NodePort.Create(Direction.Input, Port.Capacity.Single);
-                    break;
-            }
-
-            if (Input != null)
-            {
-                Input.portName = "";
-                Input.style.flexDirection = FlexDirection.Column;
-                Input.style.width = 100;
-                inputContainer.Add(Input);
-            }
+            // do not make input for root
+            if (Node is RootNode) 
+                return;
+            
+            // Anything else should have input
+            Input = NodePort.Create(Direction.Input, Port.Capacity.Single);
+            Input.portName = "";
+            Input.style.flexDirection = FlexDirection.Column;
+            Input.style.width = 100;
+            inputContainer.Add(Input);
         }
 
         private void CreateOutputPorts()
         {
-            switch (Node)
+            Output = Node switch
             {
-                case IManyChildrenNode:
-                    Output = NodePort.Create(Direction.Output, Port.Capacity.Multi);
-                    break;
-                case IOneChildNode: 
-                    Output = NodePort.Create(Direction.Output, Port.Capacity.Single);
-                    break;
-            }
+                IManyChildrenNode => NodePort.Create(Direction.Output, Port.Capacity.Multi),
+                IOneChildNode => NodePort.Create(Direction.Output, Port.Capacity.Single),
+                _ => null
+            };
 
-            if (Output != null)
-            {
-                Output.portName = "";
-                Output.style.flexDirection = FlexDirection.ColumnReverse;
-                Output.style.width = 100;
-                outputContainer.Add(Output);
-            }
+            if (Output == null) 
+                return;
+            
+            Output.portName = "";
+            Output.style.flexDirection = FlexDirection.ColumnReverse;
+            Output.style.width = 100;
+            outputContainer.Add(Output);
         }
     }
 }

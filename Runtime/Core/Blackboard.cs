@@ -5,33 +5,34 @@ namespace Shipico.BehaviourTrees
 {
     public class Blackboard
     {
-        [Serializable]
-        public struct Key<T>
-        {
-            public string name;
 
-            public Key(string name)
+        public abstract class BaseProperty
+        {
+            public string Name { get; }
+            protected BaseProperty(string name)
             {
-                this.name = name;
+                Name = name;
+            }
+        }
+        public class Property<T> : BaseProperty
+        {
+            private T _initialValue;
+
+            public Property(string name, T initialValue) : base(name)
+            {
+                _initialValue = initialValue;
             }
 
-            public static implicit operator string(Key<T> key) => key.name;
-            public static implicit operator Key<T>(string name) => new(name);
-        }
-
-        public class Property<T>
-        {
-            private T _value;
             public T Value
             {
-                get => _value;
+                get => _initialValue;
                 set
                 {
-                    if (Equals(value, _value))
+                    if (Equals(value, _initialValue))
                     {
                         return;
                     }
-                    _value = value;
+                    _initialValue = value;
                     OnValueChanged?.Invoke(value);
                 }
             }
@@ -46,35 +47,36 @@ namespace Shipico.BehaviourTrees
         private readonly Dictionary<string, Type> _propertiesTypes = new();
         
         // all of them are generic properties from T
-        private readonly Dictionary<string, object> _properties = new(); 
+        private readonly Dictionary<string, BaseProperty> _properties = new(); 
 
         public Blackboard(Blackboard parentBoard = null)
         {
             _parentBoard = parentBoard;
         }
 
-        public void SetValue<T>(Key<T> key, T value)
+        public void SetValue<T>(string key, T value)
         {
             var type = typeof(T);
             Property<T> property;
+            
             if (!_propertiesTypes.ContainsKey(key))
             {
                 _propertiesTypes.Add(key, type);
-                property = new Property<T>();
+                property = new Property<T>(key, value);
                 _properties.Add(key, property);
+                return;
             }
-            else if (!_properties.ContainsKey(key))
+
+            if (!_properties.ContainsKey(key))
             {
                 throw new Exception(
                     $"Expected to have property {key} of type {type.FullName}, but is not here, check blackboard implementation");
             }
-            else
+
+            property = _properties[key] as Property<T>;
+            if (property == null)
             {
-                property = _properties[key] as Property<T>;
-                if (property == null)
-                {
-                    throw new Exception("Cannot cast property to Property, check blackboard implementation");
-                }
+                throw new Exception("Cannot cast property to Property, check blackboard implementation");
             }
 
             property.Value = value;
@@ -84,9 +86,9 @@ namespace Shipico.BehaviourTrees
                                                            && _propertiesTypes[key] == type
                                                            && _properties.ContainsKey(key);
 
-        public T GetRawValueOr<T>(Key<T> key, T defaultValue = default)
+        public T GetRawValueOr<T>(string key, T defaultValue = default)
         {
-            if (TryGetRawValue(key, out var value))
+            if (TryGetRawValue<T>(key, out var value))
             {
                 return value;
             }
@@ -94,29 +96,29 @@ namespace Shipico.BehaviourTrees
             return defaultValue;
         }
 
-        public Property<T> GetPropertyOrThrowError<T>(Key<T> key)
+        public Property<T> GetPropertyOrThrowError<T>(string key)
         {
-            if (TryGetProperty(key, out var property))
+            if (TryGetProperty<T>(key, out var property))
             {
                 return property;
             }
 
-            throw new KeyNotFoundException($"Cannot find value of {key.name} property of type {typeof(T).FullName}");
+            throw new KeyNotFoundException($"Cannot find value of {key} property of type {typeof(T).FullName}");
         }
 
-        public T GetValueOrThrowError<T>(Key<T> key)
+        public T GetValueOrThrowError<T>(string key)
         {
-            if (TryGetRawValue(key, out var value))
+            if (TryGetRawValue<T>(key, out var value))
             {
                 return value;
             }
 
-            throw new KeyNotFoundException($"Cannot find value of {key.name} property of type {typeof(T).FullName}");
+            throw new KeyNotFoundException($"Cannot find value of {key} property of type {typeof(T).FullName}");
         }
 
-        public bool TryGetRawValue<T>(Key<T> key, out T value)
+        public bool TryGetRawValue<T>(string key, out T value)
         {
-            if (TryGetProperty(key, out var property))
+            if (TryGetProperty<T>(key, out var property))
             {
                 value = property.Value;
                 return true;
@@ -126,13 +128,13 @@ namespace Shipico.BehaviourTrees
             return false;
         }
 
-        public bool TryGetProperty<T>(Key<T> key, out Property<T> property)
+        public bool TryGetProperty<T>(string key, out Property<T> property)
         {
             var type = typeof(T);
             property = null;
-            if (HasProperty(key.name, type))
+            if (HasProperty(key, type))
             {
-                property = _properties[key.name] as Property<T>;
+                property = _properties[key] as Property<T>;
                 return true;
             }
 

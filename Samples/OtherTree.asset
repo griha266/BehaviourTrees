@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2932548445759004541
+--- !u!114 &-3614503650328396321
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04e27f70ab5643c2b787e16e8da1baf9, type: 3}
-  m_Name: f8967fa17dc2704638517c3dd1fd7b78
-  m_EditorClassIdentifier: 
-  Id: f8967fa17dc2704638517c3dd1fd7b78
-  GrahpPosition: {x: 0.00000333786, y: 226.08177}
-  Message: Called from another tree
+  m_Script: {fileID: 11500000, guid: 8d5c5de79c014a19a43fbd36ef3d2e76, type: 3}
+  m_Name: d90233bdcef1b428ea86998440655c42
+  m_EditorClassIdentifier: Shipico.BehaviourTrees::Shipico.BehaviourTrees.RootNode
+  id: d90233bdcef1b428ea86998440655c42
+  graphPosition: {x: 0, y: 0}
+  Child: {fileID: 2291816317642365013}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26,12 +26,12 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6882a981e9ba56761bed86f803bf507e, type: 3}
   m_Name: OtherTree
-  m_EditorClassIdentifier: 
-  RootNode: {fileID: 8091745700748022245}
-  Nodes:
-  - {fileID: 8091745700748022245}
-  - {fileID: -2932548445759004541}
---- !u!114 &8091745700748022245
+  m_EditorClassIdentifier: Shipico.BehaviourTrees::Shipico.BehaviourTrees.BehaviourTree
+  rootNode: {fileID: -3614503650328396321}
+  nodes:
+  - {fileID: -3614503650328396321}
+  - {fileID: 2291816317642365013}
+--- !u!114 &2291816317642365013
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,9 +40,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d5c5de79c014a19a43fbd36ef3d2e76, type: 3}
-  m_Name: 527b297c218ff315ebb79f2c92e3a65b
-  m_EditorClassIdentifier: 
-  Id: 527b297c218ff315ebb79f2c92e3a65b
-  GrahpPosition: {x: 0, y: 0}
-  Child: {fileID: -2932548445759004541}
+  m_Script: {fileID: 11500000, guid: 04e27f70ab5643c2b787e16e8da1baf9, type: 3}
+  m_Name: 57d3ea2f956d7489a815026026a00640
+  m_EditorClassIdentifier: Shipico.BehaviourTrees::Shipico.BehaviourTrees.Log
+  id: 57d3ea2f956d7489a815026026a00640
+  graphPosition: {x: 0.000030517578, y: 205.94138}
+  Message: Hello from other tree!

@@ -8,84 +8,84 @@ namespace Shipico.BehaviourTrees.Editor
     // Basic class has wierd logic for determining hover in graph
     public class NodePort : Port
     {
-      // Cannot reuse private class from base Port class, so need to do copy-paste
-      private class DefaultEdgeConnectorListener : IEdgeConnectorListener
-      {
-        private GraphViewChange m_GraphViewChange;
-        private List<Edge> m_EdgesToCreate;
-        private List<GraphElement> m_EdgesToDelete;
-
-        public DefaultEdgeConnectorListener()
+        // Cannot reuse private class from base Port class, so need to do copy-paste
+        private class DefaultEdgeConnectorListener : IEdgeConnectorListener
         {
-          m_EdgesToCreate = new List<Edge>();
-          m_EdgesToDelete = new List<GraphElement>();
-          m_GraphViewChange.edgesToCreate = this.m_EdgesToCreate;
-        }
+            private readonly GraphViewChange _graphViewChange;
+            private readonly List<Edge> _edgesToCreate;
+            private readonly List<GraphElement> _edgesToDelete;
 
-        public void OnDropOutsidePort(Edge edge, Vector2 position)
-        {
-        }
-
-        public void OnDrop(GraphView graphView, Edge edge)
-        {
-          m_EdgesToCreate.Clear();
-          m_EdgesToCreate.Add(edge);
-          m_EdgesToDelete.Clear();
-          if (edge.input.capacity == Capacity.Single)
-          {
-            foreach (Edge connection in edge.input.connections)
+            public DefaultEdgeConnectorListener()
             {
-              if (connection != edge)
-                m_EdgesToDelete.Add(connection);
+                _edgesToCreate = new List<Edge>();
+                _edgesToDelete = new List<GraphElement>();
+                _graphViewChange.edgesToCreate = _edgesToCreate;
             }
-          }
 
-          if (edge.output.capacity == Capacity.Single)
-          {
-            foreach (Edge connection in edge.output.connections)
+            public void OnDropOutsidePort(Edge edge, Vector2 position)
             {
-              if (connection != edge)
-                m_EdgesToDelete.Add(connection);
             }
-          }
 
-          if (m_EdgesToDelete.Count > 0)
-            graphView.DeleteElements(m_EdgesToDelete);
-          List<Edge> edgesToCreate = m_EdgesToCreate;
-          if (graphView.graphViewChanged != null)
-            edgesToCreate = graphView.graphViewChanged(m_GraphViewChange).edgesToCreate;
-          foreach (Edge edge1 in edgesToCreate)
-          {
-            graphView.AddElement(edge1);
-            edge.input.Connect(edge1);
-            edge.output.Connect(edge1);
-          }
+            public void OnDrop(GraphView graphView, Edge edge)
+            {
+                _edgesToCreate.Clear();
+                _edgesToCreate.Add(edge);
+                _edgesToDelete.Clear();
+                if (edge.input.capacity == Capacity.Single)
+                {
+                    foreach (var connection in edge.input.connections)
+                    {
+                        if (connection != edge)
+                            _edgesToDelete.Add(connection);
+                    }
+                }
+
+                if (edge.output.capacity == Capacity.Single)
+                {
+                    foreach (var connection in edge.output.connections)
+                    {
+                        if (connection != edge)
+                            _edgesToDelete.Add(connection);
+                    }
+                }
+
+                if (_edgesToDelete.Count > 0)
+                    graphView.DeleteElements(_edgesToDelete);
+                var edgesToCreate = _edgesToCreate;
+                if (graphView.graphViewChanged != null)
+                    edgesToCreate = graphView.graphViewChanged(_graphViewChange).edgesToCreate;
+                foreach (var edge1 in edgesToCreate)
+                {
+                    graphView.AddElement(edge1);
+                    edge.input.Connect(edge1);
+                    edge.output.Connect(edge1);
+                }
+            }
         }
-      }
 
-      public static NodePort Create(Direction direction, Capacity capacity)
-      {
-        var listener = new DefaultEdgeConnectorListener();
-        var edgeConnector = new EdgeConnector<Edge>(listener);
-        var port = new NodePort(direction, capacity)
+        public static NodePort Create(Direction direction, Capacity capacity)
         {
-          m_EdgeConnector = edgeConnector
-        };
-        port.AddManipulator(edgeConnector);
-        return port;
-      }
+            var listener = new DefaultEdgeConnectorListener();
+            var edgeConnector = new EdgeConnector<Edge>(listener);
+            var port = new NodePort(direction, capacity)
+            {
+                m_EdgeConnector = edgeConnector
+            };
+            port.AddManipulator(edgeConnector);
+            return port;
+        }
 
-      protected NodePort(Direction portDirection, Capacity portCapacity) : base(
-        Orientation.Vertical, portDirection, portCapacity, typeof(bool))
-      {
-        var label = this.Q<Label>();
-        label.style.backgroundColor = new StyleColor(new Color(0, 0, 0, 0));
-      }
+        protected NodePort(Direction portDirection, Capacity portCapacity) : base(
+            Orientation.Vertical, portDirection, portCapacity, typeof(bool))
+        {
+            var label = this.Q<Label>();
+            label.style.backgroundColor = new StyleColor(new Color(0, 0, 0, 0));
+        }
 
-      public override bool ContainsPoint(Vector2 localPoint)
-      {
-        var rect = new Rect(0, 0, layout.width, layout.height);
-        return rect.Contains(localPoint);
-      }
+        public override bool ContainsPoint(Vector2 localPoint)
+        {
+            var rect = new Rect(0, 0, layout.width, layout.height);
+            return rect.Contains(localPoint);
+        }
     }
 }

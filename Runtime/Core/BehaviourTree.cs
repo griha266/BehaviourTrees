@@ -9,8 +9,8 @@ namespace Shipico.BehaviourTrees
     {
         private readonly ObserversCollection _observers = new();
         
-        public TreeNode RootNode;
-        public List<TreeNode> Nodes;
+        public TreeNode rootNode;
+        public List<TreeNode> nodes;
         
         public bool IsInitialized => Blackboard != null;
         public Blackboard Blackboard { get; private set; }
@@ -23,7 +23,7 @@ namespace Shipico.BehaviourTrees
         {
             Blackboard = new Blackboard(parentBlackboard);
             ParentTree = parentTree;
-            foreach (var node in Nodes)
+            foreach (var node in nodes)
             {
                 node.ResetValue();
             }
@@ -31,16 +31,16 @@ namespace Shipico.BehaviourTrees
         
         public TreeNode.Status UpdateTree(float deltaTime)
         {
-            var result = RootNode.UpdateNode(Blackboard, this, deltaTime);
+            var result = rootNode.UpdateNode(Blackboard, this, deltaTime);
             OnTreeTick?.Invoke();
             return result;
         }
 
         public void Interrupt()
         {
-            RootNode.Abort();
+            rootNode.Abort();
             OnTreeStopped?.Invoke();
-            foreach (var node in Nodes)
+            foreach (var node in nodes)
             {
                 node.ResetValue();
             }
@@ -51,7 +51,6 @@ namespace Shipico.BehaviourTrees
             return _observers.AddObserver(observer);
         }
 
-        // Todo: add bubble up for events in nested trees
         public void PushEvent<TEvent>(TEvent eventData)
         {
             _observers.PushEvent(eventData);
@@ -65,8 +64,8 @@ namespace Shipico.BehaviourTrees
         public BehaviourTree Clone()
         {
             var clone = Instantiate(this);
-            var rootClone = RootNode.Clone();
-            clone.RootNode = rootClone;
+            var rootClone = rootNode.Clone();
+            clone.rootNode = rootClone;
             return clone;
         }
 

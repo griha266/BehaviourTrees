@@ -9,8 +9,8 @@ namespace Shipico.BehaviourTrees.Editor
     {
         public static string GetPackageRootPath()
         {
-            var regularAssetPath = "Assets/Plugins/BehaviourTrees/";
-            var packageAssetsPath = "Packages/com.shipico.behaviourtrees/";
+            const string regularAssetPath = "Assets/Plugins/BehaviourTrees/";
+            const string packageAssetsPath = "Packages/com.shipico.behaviourtrees/";
 
             if (AssetDatabase.IsValidFolder(packageAssetsPath))
             {
@@ -47,11 +47,11 @@ namespace Shipico.BehaviourTrees.Editor
         private static void SaveNodeAssetToTree<TTreeType>(TTreeType node, BehaviourTree tree, Vector2 position)
             where TTreeType : TreeNode
         {
-            node.GrahpPosition = position;
-            node.Id = GUID.Generate().ToString();
-            node.name = node.Id;
-            tree.Nodes ??= new List<TreeNode>();
-            tree.Nodes.Add(node);
+            node.graphPosition = position;
+            node.id = GUID.Generate().ToString();
+            node.name = node.id;
+            tree.nodes ??= new List<TreeNode>();
+            tree.nodes.Add(node);
             AssetDatabase.AddObjectToAsset(node, tree);
             AssetDatabase.SaveAssets();
         }
@@ -65,7 +65,7 @@ namespace Shipico.BehaviourTrees.Editor
 
         public static void DeleteNodeAsset(this BehaviourTree tree, TreeNode node)
         {
-            tree.Nodes.Remove(node);
+            tree.nodes.Remove(node);
             AssetDatabase.RemoveObjectFromAsset(node);
             AssetDatabase.SaveAssets();
         }
